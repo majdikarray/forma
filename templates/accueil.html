@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>acceuil</title>
+    <style>
+      label {
+        width: 150px;
+        display: inline-block;
+        font-size: 20px;
+      }
+      input {
+        line-height: 2;
+        border-color: #ddd;
+        margin-left: 5px;
+      }
+      table {
+        text-align: center;
+        width: 100%;
+      }
+      thead {
+        background: #ddd;
+      }
+
+      body {
+        padding: 10px;
+        line-height: 3;
+        width: 500px;
+        margin: 0 auto;
+        font-size: 17px;
+      }
+      .center {
+        text-align: center;
+        margin-top: 10px;
+      }
+      input[type="submit"] {
+        font-size: 17px;
+      }
+    </style>
+  </head>
+  <body>
+    {% block contenu %}
+    <h1>
+      Liste des personnes
+      <button onclick="window.location.href='/'">Return to Formulaire</button
+      ><button onclick="window.location.href='/export_personne'">Export</button>
+    </h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Sexe</th>
+          <th>Age</th>
+          <th>Nom maladie</th>
+          <th>Durée</th>
+          <th>Type</th>
+          <th>Pays</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if personnes %} {% for personne in personnes %}
+        <tr>
+          <td>{{ personne[0] }}</td>
+          <td>{{ personne[1] }}</td>
+          <td>{{ personne[3] }}</td>
+          <td>{{ personne[2] }}</td>
+          <td>{{ personne[4] }}</td>
+          <td>{{ personne[5] }}</td>
+          <td>{{ personne[6] }}</td>
+          <td>{{ personne[7] }}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="8">
+            Aucune personne n'a été ajoutée à la base de données.
+          </td>
+        </tr>
+        {% endif %} {% endblock %}
+      </tbody>
+    </table>
+  </body>
+</html>
